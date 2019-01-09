@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+<!--Standup generator v2-->
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,246 +12,19 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-
-    <title>IT Bobo Standup generator</title>
-    <style>
-        body{
-            font-family: "Roboto Slab", Arial,sans-serif;
-            font-size: 14px;
-        }
-        h1{
-            font-size: 18px;
-        }
-        nav{
-            background-color: #6200ea;
-            color:white;
-        }
-        nav .title{
-            text-align: center;
-            padding: 18px 0;
-        }
-        nav .title h1{
-            margin:0;
-        }
-        form{
-            padding: 16px;
-            padding-bottom: 100px;
-            /* border-left: 4px solid transparent; */
-            /* transition: all 0.4s; */
-        }
-        form:hover{
-            box-sizing: content-box;
-            /* border-left: 4px solid #d81b60; */
-        }
-        .container .row{
-            /* padding: 6px 0; */
-        }
-
-        .no-padding{
-            padding: 0;
-        }
-        
-        .preview-box{
-            padding-top: 15px;
-            max-height: 90%;
-            overflow: hidden;
-        }
-        .preview{
-            line-height: 1.4rem;
-            padding: 10px;
-            margin-bottom: 10px;
-            /*background-color: #ffebee;*/
-            width: 100%;
-        }
-
-        .fab{
-            z-index: 200;
-            background: #d81b60;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 55px;
-            margin: 1rem;
-            position: fixed;
-            width: 55px;
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-            bottom: 20px;
-            right:20px;
-            color: white;
-            border:0;
-            font-size: 18px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
-        }
-        
-        .fab:hover {
-            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-        }
-
-        /* .btn-preview-copy{
-            display: none;
-        } */
-        .preview p{
-                margin:0;
-            }
-        em{
-            opacity: 0.5;
-        }
-    .modal-control{
-        /* position: relative;
-        bottom:18px; */
-    }
-        .speech-wrapper {
-            padding-left: 20px;
-            padding-right: 20px;
-            margin-top:10px;
-            padding-bottom:36px;
-            margin-bottom: 18px;
-        }
-        .speech-wrapper .bubble {
-            width: 100%;
-            height: auto;
-            display: block;
-            background: #f5f5f5;
-            border-radius: 4px;
-            box-shadow: 2px 8px 5px #000;
-            position: relative;
-            margin: 0 0 25px;
-        }
-        .speech-wrapper .bubble.alt {
-            margin: 0 0 0 0px;
-        }
-        .speech-wrapper .bubble .txt {
-            padding: 8px 55px 8px 14px;
-        }
-        .speech-wrapper .bubble .txt .name {
-            font-weight: 600;
-            font-size: 12px;
-            margin: 0 0 4px;
-            color: #3498db;
-        }
-        .speech-wrapper .bubble .txt .name span {
-            font-weight: normal;
-            color: #b3b3b3;
-        }
-        .speech-wrapper .bubble .txt .name.alt {
-            color: #2ecc71;
-        }
-        .speech-wrapper .bubble .txt .message {
-            font-size: 12px;
-            margin: 0;
-            color: #2b2b2b;
-        }
-        .speech-wrapper .bubble .txt .timestamp {
-            font-size: 11px;
-            position: absolute;
-            bottom: 8px;
-            right: 10px;
-            text-transform: uppercase;
-            color: #999;
-        }
-        .speech-wrapper .bubble .bubble-arrow {
-            position: absolute;
-            width: 0;
-            bottom: 42px;
-            left: -16px;
-            height: 0;
-        }
-        .speech-wrapper .bubble .bubble-arrow.alt {
-            right: -2px;
-            bottom: 40px;
-            left: auto;
-        }
-        .speech-wrapper .bubble .bubble-arrow:after {
-            content: "";
-            position: absolute;
-            border: 0 solid transparent;
-            border-top: 9px solid #f5f5f5;
-            border-radius: 0 20px 0;
-            width: 15px;
-            height: 30px;
-            transform: rotate(145deg);
-        }
-        .speech-wrapper .bubble .bubble-arrow.alt:after {
-            transform: rotate(45deg) scaleY(-1);
-        }
-        body .preview-box{
-            position: fixed;
-            top: -150%;
-            transition: 0.4s all;
-            padding-bottom: 15px;
-        }
-        body .preview-box .speech-wrapper{
-            max-height: calc(100vh - 265px);
-            overflow: scroll;
-            min-height: 300px;
-        }
-        body.modal-open .preview-box{
-            top:32px;
-            width: calc(100% - 40px);
-            background: #fff;
-            border-radius: 2px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-            z-index: 100;
-
-        }
-
-        body.modal-open .overlay{
-            background-color: rgba(0, 0, 0,0.5);
-            z-index: 25;
-            width: 100%;
-            height: 100%;
-            position: fixed;
-        }
-        .btn-close-modal{
-            /* position: absolute; */
-        }
-        .btn{
-            margin-left: 3px;
-            margin-right: 3px;
-        }
-        @media(min-width: 576px){
-            .no-padding{
-                padding: 15px;
-            }   
-            .preview-box{
-                padding-top: 20px;
-            }
-            .fab{
-                display: none;
-            }
-            .overlay{
-                display: none;
-            }
-            body .preview-box{
-                position: relative;
-            }
-            body .preview-box .speech-wrapper{
-                max-height:none;
-                overflow:visible;
-                min-height:unset;
-            }
-            .btn-close-modal{
-                display: none;
-            }
-            body.modal-open .preview-box{
-                top:unset;
-                width: unset;
-                background: #fff;
-                border-radius: 0;
-                box-shadow:unset;
-                z-index: 100;
-
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel=icon href="assets/favicon.ico" type="image/x-icon">
+    <title>IT Bobo Standup generator v.2</title>
 </head>
 
 <body>
     <div class="overlay btn-generate"></div>
     <nav>
         <div class="title">
-            <h1>Standup Report Generator</h1>
+            <a href="bobobobo.com"><img src="assets/Bobobobo.png"></a>
+            
+            <h1>IT Standup Report Generator</h1>
+            <hr>
         </div>
     </nav>
 
@@ -288,7 +61,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4 preview-box">
                 <div class="row">
-                    <div class="col">
+                    <div class="prv col">
                         <p>Preview:</p>
                     </div>
                 </div>
@@ -299,7 +72,7 @@
                             <div class="bubble alt">
                                 <div class="txt">
                                     <p class="name alt">+353 87 1234 567<span> ~ <span class="name"></span></span></p>
-                                    <div class="message preview">
+                                    <div id="msg" class="message preview">
                                         <i>No preview</i>
                                     </div>
                                     <span class="timestamp"><span class="time"></span></span>
@@ -309,17 +82,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="row modal-control">
-                    <div class="col text-right">
-                        <button class="btn btn-success btn-copy btn-preview-copy">Copy</button><div class="btn btn-info btn-close-modal btn-generate">Close</div>
+                <button type="button" class="btn-copy btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Copy
+                  </button>
+                  
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalCenter" tabindex="-3" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Copied to clipboard!
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
                     </div>
-                </div>
+                  </div>
             </div>
         </div>
     </div>
-    <button class="fab btn-generate">
-        <i class="fa fa-play" aria-hidden="true"></i>
-    </button>
+ 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -329,123 +117,6 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-</body>
-<script>
-    var str = '';
-    var $name = $('#name');
-    var $preview = $('.preview');
-    var $pastOn = $('.data-input #past-on');
-    var $obstacle = $('.data-input #obstacle');
-    var $pastContent = $('.data-input #past-content');
-    var $todayContent = $('.data-input #today-content');
-    var $todayTarget = $('.data-input #today-target');
-    var $chatName = $('span.name');
-    var $chatTime = $('span.time');
-    var $btnGenerate = $('.btn-generate');
-
-    $btnGenerate.on('click', function(e){
-        e.preventDefault();
-        $('body').toggleClass('modal-open');
-    });
-
-    setInterval(function () {
-        var d = new Date();
-        $chatTime.text(d.getHours() + ':' + d.getMinutes());
-    }, 1000);
-
-    $('.data-input').on('keyup', '.form-input', function (e) {
-        var tempStr = '';
-        $chatName.text($name.val());
-        str = '';
-        if ($name.val() === '') {
-            str += '<em>Name not specified</em><br />';
-        }
-        else {
-            str += "<strong>" + $name.val() + "</strong><br />";
-        }
-
-        if ($pastOn.val() === '') {
-            str += 'Yesterday:<br />';
-        }
-        else {
-            str += 'On ' + $pastOn.val() + ':<br />'
-        }
-
-        if ($pastContent.val() === '') {
-            str += '<p><em>none</em></p>';
-        }
-        else {
-            tempStr = '';
-            $.each($pastContent.val().split("\n"), function (index, item){
-                tempStr += '<p>&bull; ' + item + '</p>';
-            });
-            str += tempStr; 
-        }
-
-        str += '<br />Obstacle:<br />';
-
-        if ($obstacle.val() === '') {
-            str += '<p><em>none</em></p>';
-        }
-        else {
-            tempStr = '';
-            $.each($obstacle.val().split("\n"), function (index, item){
-                tempStr += '<p>&bull; ' + item + '</p>';
-            });
-            str += tempStr; 
-        }
-
-        str += '<br />Today:<br />';
-        if ($todayContent.val() === '') {
-            str += '<p><em>none</em></p>';
-        }
-        else {
-            tempStr = '';
-            $.each($todayContent.val().split("\n"), function (index, item){
-                tempStr += '<p>&bull; ' + item + '</p>';
-            });
-            str += tempStr; 
-        }
-
-        str += '<br />Target:<br />';
-        if ($todayTarget.val() === '') {
-            str += '<p><em>none</em></p>';
-        }
-        else {
-            tempStr = '';
-            $.each($todayTarget.val().split("\n"), function (index, item){
-                tempStr += '<p>&bull; ' + item + '</p>';
-            });
-            str += tempStr; 
-        }
-        str = str.replace(new RegExp("\n", 'g'), "<br />");
-        $preview.html(str);
-    });
-
-    function copy(text) {
-        text = text.replace(new RegExp('<strong>', 'g'), "*");
-        text = text.replace(new RegExp('</strong>', 'g'), "*");
-        text = text.replace(new RegExp('<em>', 'g'), "_");
-        text = text.replace(new RegExp('</em>', 'g'), "_");
-        text = text.replace(new RegExp('<p>', 'g'), "");
-        text = text.replace(new RegExp('</p>', 'g'), '\n');
-        text = text.replace(new RegExp('<br />', 'g'), '\n');
-        var parser = new DOMParser;
-        var dom = parser.parseFromString(text, 'text/html');
-        var text = dom.body.textContent;
-        var $temp = $("<textarea>");
-        $("body").append($temp);
-        $temp.val(text).select();
-        document.execCommand("copy");
-        $temp.remove();
-    }
-
-    $('.btn-copy').on('click', function (e) {
-        e.preventDefault();
-        copy(str);
-    });
-
-
-</script>
-
+    <script src="main.js"></script>
+    </body>
 </html>
