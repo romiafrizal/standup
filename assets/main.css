@@ -130,6 +130,7 @@ form:hover{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 .btn{
+    color:white;
     background-color: #f8afad;
 }
 .btn-secondary{
@@ -266,6 +267,12 @@ body.modal-open .preview-box{
     .no-padding{
         padding: 15px;
     }   
+    .nav img{
+        width:24vw !important;
+    }
+    h1{
+        font-size:30px;
+    }
     .preview-box{
         padding-top: 20px;
     }
