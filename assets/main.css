@@ -44,7 +44,7 @@ nav{
 }
 nav img{
     top:10px;
-    width:8vw;
+    width:100px;
     padding: 20px;
 }
 nav .title{
@@ -318,7 +318,7 @@ body.modal-open .preview-box{
         border-color:#f79592;
     }
     .btn-primary:focus {
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);s
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
     
 }
